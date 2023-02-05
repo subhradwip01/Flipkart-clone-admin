@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
     case authConstants.LOGIN_FAILURE:
         state={
             ...state,
+            authenticating:false,
             error:true,
             errorMessage:action.payload.message
         }
