@@ -33,28 +33,4 @@ export const login = (user) => {
   };
 };
 
-export const isUserSignedin = () =>{
-  return async (dispatch)=>{
-    const token = window.localStorage.getItem("token");
-    const user = window.localStorage.getItem("user");
 
-    //TTODO: need to be implement more
-    if(token){
-      dispatch({
-        type: authConstants.LOGIN_SUCCESS,
-        payload: {
-          token,
-          user,
-        },
-      });
-    }else{
-      dispatch({
-        type: authConstants.LOGIN_FAILURE,
-        payload: {
-          message: "Sorry! Session expired, failed to login",
-        },
-      });
-    }
-  }
-    
-}
