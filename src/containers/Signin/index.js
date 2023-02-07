@@ -13,7 +13,7 @@ const Signin = () => {
   })
 
   const dispatch = useDispatch()
-  const { authenticating, authenticated, error, errorMessage } = useSelector(state => state.auth);
+  const { authenticating, authenticated, error, errorMessage, logoutMessage } = useSelector(state => state.auth);
 
 
   const inputHandler = (e) => {
@@ -48,6 +48,11 @@ const Signin = () => {
               {error && !authenticated &&
                 <Alert variant="danger">
                   {errorMessage}
+                </Alert>
+              }
+              {logoutMessage && !authenticated &&
+                <Alert variant="success">
+                  {logoutMessage}
                 </Alert>
               }
               <Form style={{
