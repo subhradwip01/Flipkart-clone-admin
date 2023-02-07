@@ -34,3 +34,16 @@ export const login = (user) => {
 };
 
 
+
+export const logOut = () =>{
+  return async (dispatch) => {
+    window.localStorage.removeItem("user");
+    window.localStorage.removeItem("token");
+    dispatch({
+      type: authConstants.LOGOUT_SCCESS,
+      payload: {
+        message: "Logged out sucessfully!"
+      }
+    })
+  }
+}
