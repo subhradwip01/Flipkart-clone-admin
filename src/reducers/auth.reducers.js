@@ -6,7 +6,8 @@ const initialState = {
   authenticated:false,
   authenticating : false,
   error:false,
-  errorMessage:""
+  errorMessage:"",
+  logoutMessage:"",
 };
 
 export default (state = initialState, action) => {
@@ -16,7 +17,8 @@ export default (state = initialState, action) => {
         ...state,
         authenticating:true,
         error:false,
-        errorMessage:""
+        errorMessage:"",
+        logoutMessage:"",
       };
       break;
     case authConstants.LOGIN_SUCCESS:
@@ -27,16 +29,24 @@ export default (state = initialState, action) => {
             authenticated:true,
             authenticating:false,
             error:false,
-            errorMessage:true
+            errorMessage:"",
+            logoutMessage:"",
         }
     case authConstants.LOGIN_FAILURE:
         state={
             ...state,
             authenticating:false,
             error:true,
-            errorMessage:action.payload.message
+            errorMessage:action.payload.message,
+            logoutMessage:"",
         }
         break;
+    case  authConstants.LOGOUT_SCCESS:
+      state = {
+        ...initialState,
+        logoutMessage:action.payload.message
+      }
+    break;  
     default:
         state={
             ...initialState
