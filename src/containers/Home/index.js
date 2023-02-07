@@ -2,14 +2,17 @@ import React from 'react'
 import Layout from '../../components/Layout'
 import header from "../../assets/ecom-home.png"
 import { Container,Row, Col } from 'react-bootstrap'
-
+import "./style.css"
 const Home = () => {
   return (
     <Layout>
 
       <Container>
-      <Row>
-          <Col md={6}></Col>
+      <Row >
+          <Col md={2} className="sidebar">Side bar</Col> 
+          <Col md={12} style={{
+            marginLeft:"30px"
+          }}>container</Col>
       </Row>
       </Container>
       
