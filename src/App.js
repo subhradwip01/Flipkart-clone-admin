@@ -6,8 +6,12 @@ import Home from './containers/Home';
 import Signup from './containers/Signup';
 import Signin from './containers/Signin';
 import PrivateRoute from './components/HOC/PrivateRoute';
+import { isUserSignedin } from './actions';
 function App() {
   const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(isUserSignedin())
+  },[])
   return (
     <div className="App">
      <Routes>
