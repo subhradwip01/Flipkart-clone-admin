@@ -17,7 +17,7 @@ const Layout = ({sidebar,children}) => {
                 }}>{children}</Col>
             </Row>
             :
-            {children}
+            children
           }
         </Container>
     </>

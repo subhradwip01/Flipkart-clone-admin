@@ -15,6 +15,9 @@ const Sidebar = () => {
               <li>
                 <NavLink to="/orders">Orders</NavLink>
               </li>
+              <li>
+                <NavLink to="/category">Category</NavLink>
+              </li>
         </ul>
     </Col> 
   )

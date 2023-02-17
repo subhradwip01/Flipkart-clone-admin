@@ -9,6 +9,7 @@ import PrivateRoute from './components/HOC/PrivateRoute';
 import { isUserSignedin } from './actions';
 import Products from './containers/Products';
 import Orders from './containers/Orders';
+import Category from './containers/Category';
 function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
@@ -22,6 +23,7 @@ function App() {
         <Route element={<Home/>} path="/" exact/>
         <Route element={<Products/>} path="/products"/>
         <Route element={<Orders/>} path="/orders"/>
+        <Route element={<Category/>} path="/category"/>
       </Route>
       <Route path="signin" element={<Signin/>} />
       <Route path="signup" element={<Signup/>} />
