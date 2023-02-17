@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
             logoutMessage:"",
         }
         break;
-    case  authConstants.LOGOUT_SCCESS:
+    case  authConstants.LOGOUT_SUCCESS:
       state = {
         ...initialState,
         logoutMessage:action.payload.message

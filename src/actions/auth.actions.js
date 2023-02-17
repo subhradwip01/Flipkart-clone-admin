@@ -51,7 +51,7 @@ export const isUserSignedin = () =>{
       dispatch({
         type: authConstants.LOGIN_FAILURE,
         payload: {
-          message: "Sorry! Session expired, failed to login",
+          message: "Sorry! Unable to login",
         },
       });
     }
@@ -64,7 +64,7 @@ export const logOut = () =>{
     window.localStorage.removeItem("user");
     window.localStorage.removeItem("token");
     dispatch({
-      type: authConstants.LOGOUT_SCCESS,
+      type: authConstants.LOGOUT_SUCCESS,
       payload: {
         message: "Logged out sucessfully!"
       }
