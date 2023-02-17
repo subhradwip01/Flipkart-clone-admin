@@ -1,14 +1,24 @@
 import React from 'react'
 import Header from '../Header'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
+import Sidebar from '../Sidebar'
 
-const Layout = ({children}) => {
+const Layout = ({sidebar,children}) => {
   return (
     <>
         <Header/>
         <Container>
-
-        {children}
+          {
+            sidebar ? 
+            <Row >
+                <Sidebar/>
+                <Col md={12} style={{
+                  marginLeft:"30px"
+                }}>{children}</Col>
+            </Row>
+            :
+            {children}
+          }
         </Container>
     </>
   )
