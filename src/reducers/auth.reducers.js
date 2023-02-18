@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
             errorMessage:"",
             logoutMessage:"",
         }
+        break;
     case authConstants.LOGIN_FAILURE:
         state={
             ...state,
@@ -46,7 +47,7 @@ export default (state = initialState, action) => {
         ...initialState,
         logoutMessage:action.payload.message
       }
-    break;  
+      break;  
     default:
         state={
             ...initialState
