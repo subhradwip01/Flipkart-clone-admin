@@ -1,1 +1,2 @@
-1. Auto logout after session exired
+1. Auto logout after session expired
+2. Category add state upadte

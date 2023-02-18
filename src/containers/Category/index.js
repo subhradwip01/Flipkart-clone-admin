@@ -51,9 +51,10 @@ const Category = () => {
 
   const submitHanlder = (e) => {
     e.preventDefault();
-    const category = {
-        name,parentId,categoryImage
-    }
+    const category = new FormData();
+    category.append('name',name)
+    category.append('parentId',parentId)
+    category.append('categoryImage',categoryImage)
     dispatch(addCategory(category));
   };
 
@@ -115,7 +116,7 @@ const Category = () => {
           >
             <option>Select Parent Category (If Any)</option>
             {createCategoryList(categories).map(({ name, value }) => (
-              <option value={value}>{name}</option>
+              <option key={value} value={value}>{name}</option>
             ))}
           </Form.Select>
           <Input

@@ -13,7 +13,6 @@ import Category from './containers/Category';
 function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
-    console.log("Hello")
     dispatch(isUserSignedin())
   },[])
   return (
