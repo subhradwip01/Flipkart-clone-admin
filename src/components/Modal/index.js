@@ -18,7 +18,7 @@ const CustomModal = (props) => {
         {props.children}
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.submit} variant="primary">Submit</Button>
+        <Button onClick={props.onSubmit} variant="primary">Submit</Button>
         <Button onClick={props.onHide} variant="secondary">Close</Button>
       </Modal.Footer>
     </Modal>
