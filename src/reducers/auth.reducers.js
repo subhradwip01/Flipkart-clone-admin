@@ -48,11 +48,6 @@ export default (state = initialState, action) => {
         logoutMessage:action.payload.message
       }
       break;  
-    default:
-        state={
-            ...initialState
-        }
-        break
   }
   return state;
 };
