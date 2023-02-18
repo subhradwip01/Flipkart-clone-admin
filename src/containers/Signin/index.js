@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import Layout from "../../components/Layout";
 import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
+import Input from "../../components/Input";
 import loginI from "../../assets/loginI.png"
 import { login } from "../../actions"
 import { useDispatch, useSelector } from "react-redux";
@@ -58,15 +59,20 @@ const Signin = () => {
               <Form style={{
                 width: "100%"
               }}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" name="email" onChange={inputHandler} />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" name="password" onChange={inputHandler} />
-                </Form.Group>
+                <Input
+                  label="Email address"
+                  type="email"
+                  placeholder="Enter email"
+                  name="email"
+                  onChangeHandler={inputHandler}
+                />
+                <Input 
+                  label="Password"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  onChangeHandler={inputHandler}
+                />
                 <Button variant="primary" type="submit" onClick={signinHandler}>
                   {authenticating ? "Signing" : "Signin"}
                 </Button>

@@ -4,6 +4,7 @@ import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
 import signupP from "../../assets/signup.webp";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions/register.actions";
+import Input from "../../components/Input";
 const Signup = () => {
 
   const [userInfo,setUserInfo]=useState({
@@ -54,28 +55,38 @@ const Signup = () => {
               >
                 <Row>
                   <Col md={6}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>First Name</Form.Label>
-                      <Form.Control type="firstName" placeholder="Enter email" name="firstName" onChange={userInputHandler}/>
-                    </Form.Group>
+                    <Input
+                      label="First Name"
+                      type="firstName"
+                      placeholder="First Name"
+                      name="firstName"
+                      onChangeHandler={userInputHandler}
+                    />
                   </Col>
                   <Col md={6}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Last Name</Form.Label>
-                      <Form.Control type="lastName" placeholder="Enter email"name='lastName' onChange={userInputHandler}/>
-                    </Form.Group>
+                    <Input
+                      label="Last Name"
+                       type="lastName"
+                       placeholder="Last Name"
+                       name="lastName"
+                       onChangeHandler={userInputHandler}
+                    />
                   </Col>
                 </Row>
-
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" name="email" onChange={userInputHandler}/>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" name="password" onChange={userInputHandler}/>
-                </Form.Group>
+                <Input
+                  label="Email address"
+                  type="email"
+                  placeholder="Enter email"
+                  name="email"
+                  onChangeHandler={userInputHandler}
+                />
+                <Input
+                  label="Password"
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  onChangeHandler={userInputHandler}
+                />
                 <Button variant="primary" type="submit" onClick={signupHandler}>
                   {loading? "Signing up" : "Signup"}
                 </Button>
