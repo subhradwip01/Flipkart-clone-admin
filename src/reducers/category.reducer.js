@@ -69,7 +69,7 @@ export default (state = initialState, action) => {
 };
 
 const buildCategories= (categories, category) => {
-    if (category.parentId === undefined){
+    if (category.parentId === undefined || category.parentId=== null){
         category.children = [];
         return categories.concat(category)
     }  

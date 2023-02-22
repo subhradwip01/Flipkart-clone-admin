@@ -12,7 +12,7 @@ const Category = () => {
   );
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
-  const [parentId, setParentId] = useState(null);
+  const [parentId, setParentId] = useState(undefined);
   const [categoryImage,setCategoryImage]=useState(null);
   useEffect(() => {
     dispatch(getCategory());
@@ -53,8 +53,9 @@ const Category = () => {
     e.preventDefault();
     const category = new FormData();
     category.append('name',name)
-    category.append('parentId',parentId)
+    parentId && category.append('parentId',parentId)
     category.append('categoryImage',categoryImage)
+    // console.log(name,parentId)
     dispatch(addCategory(category));
     !loading && handleClose();
   };
