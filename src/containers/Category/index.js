@@ -56,6 +56,7 @@ const Category = () => {
     category.append('parentId',parentId)
     category.append('categoryImage',categoryImage)
     dispatch(addCategory(category));
+    !loading && handleClose();
   };
 
   return (
@@ -100,6 +101,7 @@ const Category = () => {
           onHide={handleClose}
           title="Add Category"
           onSubmit={submitHanlder}
+          loading={loading.toString()}
         >
           <Input
             label="Enter Category Name"
