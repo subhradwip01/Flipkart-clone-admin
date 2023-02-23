@@ -1,9 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Layout from '../../components/Layout'
 import { Alert, Col, Row, Button, Form } from "react-bootstrap";
 import CustomModal from '../../components/Modal';
 import Input from '../../components/Input';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategory } from '../../actions/category.action';
+import { addProduct } from '../../actions';
 const Products = () => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
@@ -14,11 +16,24 @@ const Products = () => {
     price:"",
     quantity:"",
     description:"",
-    reviews:[]
+    category:"",
   })
+
+  const [productPictures,setProductPictures] = useState([])
+
   const { categories } = useSelector(
     (state) => state.category
   );
+
+  const dispatach = useDispatch();
+
+  useEffect(() => {
+      if(categories.length===0){
+        console.log("Product")
+        dispatach(getCategory())
+      }
+  }, [])
+  
 
   const createCategoryList = (categories, options = []) => {
     for (let category of categories) {
@@ -34,12 +49,36 @@ const Products = () => {
   };
 
   const submitHanlder = () =>{
+    const productInfo = new FormData();
+    productInfo.append('name',productData.name);
+    productInfo.append('quantity',productData.quantity);
+    productInfo.append('price',productData.price);
+    productInfo.append('description',productData.description);
+    productInfo.append('category',productData.category);
+    for (let pic of productPictures){
+      productInfo.append('productPictures',pic)
+    }
+    dispatach(addProduct(productInfo));
+    handleClose();
+  }
 
+  const porductPictureHander = (e)=>{
+    setProductPictures([
+      ...productPictures,
+      e.target.files[0]
+    ])
   }
 
   const userInputhandler = (e) =>{
-
+    console.log(e.target.name)
+    setProductData({
+      ...productData,
+      [e.target.name]:e.target.value,
+    })
   }
+
+  
+
   return (
     <Layout sidebar={true} >
         <Row>
@@ -66,28 +105,37 @@ const Products = () => {
           onSubmit={submitHanlder}
         >
           <Input
-            label="Enter Category Name"
-            placeholder="e.g. Mobile"
+            label="Enter Product Name"
+            placeholder="e.g. Samsung A52"
             name="name"
             type="name"
             onChangeHandler={userInputhandler}
           />
           <Input
-            label="Enter Category Name"
-            placeholder="e.g. Mobile"
-            name="name"
-            type="name"
+            label="Enter Price"
+            placeholder="e.g. 15000"
+            name="price"
+            type="number"
             onChangeHandler={userInputhandler}
           />
           <Input
-            label="Enter Category Name"
-            placeholder="e.g. Mobile"
-            name="name"
-            type="name"
+            label="Description"
+            placeholder="e.g. 120 Hz Touch Sampling Rate, Sunlight Screen Support, COG Sealing Process, In Cell Touch Panel ..."
+            name="description"
+            type="text"
+            onChangeHandler={userInputhandler}
+          />
+
+          <Input
+            label="Enter Quantity"
+            placeholder="e.g. 50"
+            name="quantity"
+            type="number"
             onChangeHandler={userInputhandler}
           />
 
           <Form.Select
+            name="category"
             onChange={userInputhandler}
           >
             <option>Select Category (If Any)</option>
@@ -99,8 +147,17 @@ const Products = () => {
             type="file"
             name="categoryImage"
             lable="Add Image"
-            onChangeHandler={userInputhandler}
+            onChangeHandler={porductPictureHander}
           />
+          <div/>
+          <div/>
+          {productPictures.length > 0 &&
+            productPictures.map((image,index)=>(
+              <div key={index}>
+                 {image.name}
+              </div>
+            ))
+          }
         </CustomModal>
     </Layout>
   )
