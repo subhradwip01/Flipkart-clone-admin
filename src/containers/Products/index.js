@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import Layout from '../../components/Layout'
-import { Alert, Col, Row, Button, Form } from "react-bootstrap";
+import { Alert, Col, Row, Button, Form, Table } from "react-bootstrap";
 import CustomModal from '../../components/Modal';
 import Input from '../../components/Input';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,6 +22,12 @@ const Products = () => {
   const { categories } = useSelector(
     (state) => state.category
   );
+  const { products } = useSelector(
+    (state) => state.product
+  );
+
+  console.log(products)
+  
 
   const dispatach = useDispatch();
   
@@ -39,6 +45,40 @@ const Products = () => {
     return options;
   };
 
+  const renderProducts = () =>{
+    return (
+      <Table striped responsive bordered>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Description</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        {products.length>0 && 
+        products.map(({_id,name,price,quantity,description,category},index)=>(
+          <tr>
+        <td>{index+1}</td>
+        <td>{name}</td>
+        <td>{price}</td>
+        <td>{quantity}</td>
+        <td>{description}</td>
+        <td>{category.name}</td>
+      </tr>
+        ))
+        
+        }
+        
+       
+      </tbody>
+    </Table>
+    )
+  }
+
   const submitHanlder = () =>{
     const productInfo = new FormData();
     productInfo.append('name',productData.name);
@@ -51,7 +91,7 @@ const Products = () => {
     }
     dispatach(addProduct(productInfo));
     setProductData({
-      name:"",
+    name:"",
     price:"",
     quantity:"",
     description:"",
@@ -94,6 +134,9 @@ const Products = () => {
               Add New
             </Button>
           </div>
+        </Col>
+        <Col md={12}>
+          {renderProducts()}
         </Col>
       </Row>
       <CustomModal
