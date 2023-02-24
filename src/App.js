@@ -6,7 +6,7 @@ import Home from './containers/Home';
 import Signup from './containers/Signup';
 import Signin from './containers/Signin';
 import PrivateRoute from './components/HOC/PrivateRoute';
-import { isUserSignedin,getCategory } from './actions';
+import { isUserSignedin,getCategory, getProduct } from './actions';
 import Products from './containers/Products';
 import Orders from './containers/Orders';
 import Category from './containers/Category';
@@ -16,6 +16,7 @@ function App() {
     console.log("Hello")
     dispatch(isUserSignedin())
     dispatch(getCategory());
+    dispatch(getProduct())
   },[])
   return (
     <div className="App">
