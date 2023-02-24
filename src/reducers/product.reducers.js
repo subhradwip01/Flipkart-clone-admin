@@ -46,6 +46,10 @@ export default (state = initialState, action) => {
       
       state = {
         ...state,
+        loading: true,
+        error: false,
+        errorMessage: "",
+        products:[...state.products, action.payload.product]
         
       };
       break;
