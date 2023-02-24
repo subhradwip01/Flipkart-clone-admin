@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 import { Form, Button, Row, Col, Container, Alert } from "react-bootstrap";
 import signupP from "../../assets/signup.webp";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../../actions/register.actions";
+import { signup } from "../../actions";
 import Input from "../../components/Input";
 const Signup = () => {
 

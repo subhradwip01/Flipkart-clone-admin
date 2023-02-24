@@ -26,7 +26,6 @@ const Signin = () => {
 
   const signinHandler = (e) => {
     e.preventDefault()
-    console.log(userInfo)
     dispatch(login(userInfo));
   }
 

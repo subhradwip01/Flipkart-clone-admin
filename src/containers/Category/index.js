@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Col, Row, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addCategory, getCategory } from "../../actions/category.action";
+import { addCategory } from "../../actions";
 import Layout from "../../components/Layout";
 import CustomModal from "../../components/Modal";
 import Input from "../../components/Input";
@@ -14,9 +14,7 @@ const Category = () => {
   const [name, setName] = useState("");
   const [parentId, setParentId] = useState(undefined);
   const [categoryImage,setCategoryImage]=useState(null);
-  useEffect(() => {
-    dispatch(getCategory());
-  }, []);
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

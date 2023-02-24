@@ -4,11 +4,9 @@ import { Alert, Col, Row, Button, Form } from "react-bootstrap";
 import CustomModal from '../../components/Modal';
 import Input from '../../components/Input';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCategory } from '../../actions/category.action';
 import { addProduct } from '../../actions';
 const Products = () => {
   const [show, setShow] = useState(false);
-  const [name, setName] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [productData,setProductData]=useState({
@@ -26,13 +24,6 @@ const Products = () => {
   );
 
   const dispatach = useDispatch();
-
-  useEffect(() => {
-      if(categories.length===0){
-        console.log("Product")
-        dispatach(getCategory())
-      }
-  }, [])
   
 
   const createCategoryList = (categories, options = []) => {
