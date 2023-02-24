@@ -55,6 +55,9 @@ const Category = () => {
     category.append('categoryImage',categoryImage)
     // console.log(name,parentId)
     dispatch(addCategory(category));
+    setCategoryImage("");
+    setName("");
+    setParentId("")
     !loading && handleClose();
   };
 
@@ -107,6 +110,7 @@ const Category = () => {
             placeholder="e.g. Mobile"
             name="name"
             type="name"
+            value={name}
             onChangeHandler={(e) => setName(e.target.value)}
           />
 
@@ -114,6 +118,7 @@ const Category = () => {
             onChange={(e) => {
               setParentId(e.target.value);
             }}
+            value={parentId}
           >
             <option>Select Parent Category (If Any)</option>
             {createCategoryList(categories).map(({ name, value }) => (
@@ -124,6 +129,7 @@ const Category = () => {
             type="file"
             name="categoryImage"
             lable="Add Image"
+            value={categoryImage}
             onChangeHandler={(e)=>setCategoryImage(e.target.files[0])}
           />
         </CustomModal>

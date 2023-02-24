@@ -50,6 +50,13 @@ const Products = () => {
       productInfo.append('productPictures',pic)
     }
     dispatach(addProduct(productInfo));
+    setProductData({
+      name:"",
+    price:"",
+    quantity:"",
+    description:"",
+    category:"",
+    })
     handleClose();
   }
 
@@ -100,6 +107,7 @@ const Products = () => {
             placeholder="e.g. Samsung A52"
             name="name"
             type="name"
+            value={productData.name}
             onChangeHandler={userInputhandler}
           />
           <Input
@@ -107,6 +115,7 @@ const Products = () => {
             placeholder="e.g. 15000"
             name="price"
             type="number"
+            value={productData.price}
             onChangeHandler={userInputhandler}
           />
           <Input
@@ -114,6 +123,7 @@ const Products = () => {
             placeholder="e.g. 120 Hz Touch Sampling Rate, Sunlight Screen Support, COG Sealing Process, In Cell Touch Panel ..."
             name="description"
             type="text"
+            value={productData.description}
             onChangeHandler={userInputhandler}
           />
 
@@ -122,12 +132,14 @@ const Products = () => {
             placeholder="e.g. 50"
             name="quantity"
             type="number"
+            value={productData.quantity}
             onChangeHandler={userInputhandler}
           />
 
           <Form.Select
             name="category"
             onChange={userInputhandler}
+            value={productData.category}
           >
             <option>Select Category (If Any)</option>
             {createCategoryList(categories).map(({ name, value }) => (
@@ -138,6 +150,7 @@ const Products = () => {
             type="file"
             name="categoryImage"
             lable="Add Image"
+            value={productPictures[-1]}
             onChangeHandler={porductPictureHander}
           />
           <div/>
