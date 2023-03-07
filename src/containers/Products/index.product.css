@@ -1,0 +1,13 @@
+.key{
+    font-weight: bold;
+    font-size: 12;
+}
+.productImageContainer{
+    display: flex;
+    overflow-x: scroll;
+    text-align: center;
+}
+.productImageContainer div img{
+    width: "80px";
+    
+}

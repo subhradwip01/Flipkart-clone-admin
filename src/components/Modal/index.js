@@ -1,5 +1,5 @@
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const CustomModal = (props) => {
   return (
@@ -14,15 +14,19 @@ const CustomModal = (props) => {
           {props.title}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        {props.children}
-      </Modal.Body>
+      <Modal.Body>{props.children}</Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onSubmit} variant="primary">{props.loading =="true" ?"Submiting" : "Submit"}</Button>
-        <Button onClick={props.onHide} variant="secondary">Close</Button>
+        {!props.detailsModal && (
+          <Button onClick={props.onSubmit} variant="primary">
+            {props.loading == "true" ? "Submiting" : "Submit"}
+          </Button>
+        )}
+        <Button onClick={props.onHide} variant="secondary">
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );
-}
+};
 
 export default CustomModal;
